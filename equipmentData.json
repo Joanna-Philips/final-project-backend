@@ -1,0 +1,76 @@
+{
+    "weapons": [
+    {
+        "id": 0,
+        "name": "Unarmed",
+        "img_src": "../assets/img/Rock.jpg",
+        "damage": 1,
+        "cost": 0,
+        "sell": 0,
+        "description": "Let's go HAM!"
+    },    
+    {
+        "id": 1,
+        "name": "Pet rock",
+        "img_src": "../assets/img/Rock.jpg",
+        "damage": 2,
+        "cost": 4,
+        "sell": 1,
+        "description": "Trusty Ralph, an ample throwing weapon"
+    },
+    {
+        "id": 2,
+        "name": "Wooden Sword",
+        "img_src": "../assets/img/Woodensword.jpg",
+        "damage": 3,
+        "cost": 6,
+        "sell": 2,
+        "description": "Look daddy, I made this myself! Is carved on the hilt - A precious toy"
+    },
+    {
+        "id": 3,
+        "name": "Dull pickaxe",
+        "img_src": "../assets/img/Pickaxe.jpg",
+        "damage": 5,
+        "cost": 9,
+        "sell": 3,
+        "description": "Been in long service in the mines"
+    },
+    {
+        "id": 4,
+        "name": "Axe",
+        "img_src": "../assets/img/Axe.jpg",
+        "damage": 7,
+        "cost": 15,
+        "sell": 5,
+        "description": "Intended for manual labour but can be repurposed"
+    },
+    {
+        "id": 5,
+        "name": "Spiked club",
+        "img_src": "../assets/img/Spikedclub.jpg",
+        "damage": 10,
+        "cost": 21,
+        "sell": 7,
+        "description": "Property of F.F is i barely eligible underneath the smeared, dried blood at the base of the club"
+    },
+    {
+        "id": 6,
+        "name": "Iron sword",
+        "img_src": "../assets/img/Ironsword.jpg",
+        "damage": 12,
+        "cost": 27,
+        "sell": 9,
+        "description": "SWISHSWOOSH!"
+    },
+    {
+        "id": 7,
+        "name": "Flail of a immeasurable hurt",
+        "img_src": "../assets/img/Flail.jpg",
+        "damage": 18,
+        "cost": 45,
+        "sell": 12,
+        "description": "Time to bring on the hurt!"
+    }
+]
+}
