@@ -1,0 +1,19 @@
+{
+"adventures": [
+    {
+        "description": "Comb the hair of the fair lady Rapunzel",
+        "difficulty": 2
+     },
+    {
+       "description": "Prepare and present a feast of Sæhrímnir",
+       "difficulty": 5
+    },
+    {
+        "description": "Wrestle your greased up grandmother during the holidays",
+        "difficulty": 8
+     },
+     {
+        "description": "",
+        "difficulty": 10
+     }
+]}
