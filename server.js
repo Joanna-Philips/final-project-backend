@@ -147,11 +147,30 @@ app.post("/login/guest", async (req, res) => {
   }
 });
 
+// Authenticate the user
+const authenticateUser = async (req, res, next) => {
+  const accessToken = req.header("Authorization");
+  try {
+    const user = await User.findOne({ accessToken: accessToken });
+    if (user) {
+      req.user = user;
+      next();
+    } else {
+      res.status(401).json({
+        success: false,
+        response: "Please log in",
+      });
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      response: e,
+    });
+  }
+};
+
 //// Equipment
 const EquipmentSchema = new mongoose.Schema({
-  id: {
-    type: Number
-  },
   name: {
     type: String
   },
@@ -177,49 +196,56 @@ const EquipmentSchema = new mongoose.Schema({
 
 const Equipment = mongoose.model("Equipment", EquipmentSchema);
 
-// Authenticate the user
-const authenticateUser = async (req, res, next) => {
-  const accessToken = req.header("Authorization");
-  try {
-    const user = await User.findOne({accessToken: accessToken});
-    if (user) {
-      next();
-    } else {
-      res.status(401).json({
-        success: false,
-        response: "Please log in"
-      })
-    }
-  } catch (e) {
-    res.status(500).json({
-      success: false,
-      response: e
-    });
-  }
-}
-
-app.get("/equipments",authenticateUser);
+app.get("/equipments", authenticateUser);
 app.get("/equipments", async (req, res) => {
-  const accessToken = req.header("Authorization");
-  const user = await User.findOne({accessToken: accessToken});
-  const equipments = await Equipment.find({user: user._id})
-  res.status(200).json({success: true, response: equipments})
+  try {
+    const equipments = await Equipment.find();
+
+    if (!equipments.length > 0) {
+      return res.status(404).json({ success: false, message: "Equipments not found" });
+    }
+    
+    res.status(200).json({ success: true, response: equipments });
+  } catch (error) {
+    res.status(500).json({ success: false, error: "Server Error" });
+  }
 });
 
-app.post("/equipments",authenticateUser);
+app.post("/equipments", authenticateUser);
 app.post("/equipments", async (req, res) => {
-  const { newEquipment } = req.body;
-  const accessToken = req.header("Authorization");
-  const user = await User.findOne({accessToken: accessToken});
-  const createdEquipment = await new Equipment({newEquipment: newEquipment}).save();
-  res.status(200).json({success: true, response: createdEquipment})
+  try {
+    const { newEquipment } = req.body;
+    const createdEquipment = await new Equipment({ newEquipment: newEquipment }).save();
+
+    if (!createdEquipment) {
+      return res.status(404).json({ success: false, message: "Could not create equipment" });
+    }
+
+    res.status(200).json({ success: true, response: createdEquipment });
+  } catch (error) {
+    res.status(500).json({ success: false, error: "Server Error" });
+  }
+});
+
+app.delete("/equipments/:id", authenticateUser);
+app.delete("/equipments/:id", async (req, res) => {
+  try {
+    const equipmentId = req.params.id;
+    const deletedEquipment = await Equipment.findOneAndDelete({_id: equipmentId});
+
+    if (!deletedEquipment) {
+      return res.status(404).json({ success: false, message: "Could not delete equipment" });
+    }
+
+    res.status(200).json({ success: true, response: deletedEquipment });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
 });
 
 //// Adventure
 const AdventureSchema = new mongoose.Schema({
-  id: {
-    type: Number
-  },
   description: {
     type: String
   },
@@ -235,20 +261,52 @@ const Adventure = mongoose.model("Adventure", AdventureSchema);
 
 app.get("/adventures",authenticateUser);
 app.get("/adventures", async (req, res) => {
-  const accessToken = req.header("Authorization");
-  const user = await User.findOne({accessToken: accessToken});
-  const adventures = await Adventure.find({user: user._id})
-  res.status(200).json({success: true, response: adventures})
+  try {
+    const adventures = await Adventure.find();
+
+    if (!adventures.length > 0) {
+      return res.status(404).json({ success: false, message: "Adventures not found" });
+    }
+
+    res.status(200).json({success: true, response: adventures});
+  } catch (error) {
+    res.status(500).json({ success: false, error: "Internal server Error" });
+  }
 });
 
 app.post("/adventures",authenticateUser);
 app.post("/adventures", async (req, res) => {
-  const { newAdventure } = req.body;
-  const accessToken = req.header("Authorization");
-  const user = await User.findOne({accessToken: accessToken});
-  const createdAdventure = await new Adventure({ newAdventure: newAdventure }).save();
-  res.status(200).json({success: true, response: createdAdventure})
+  try {
+    const { newAdventure } = req.body;
+    const createdAdventure = await new Adventure({ newAdventure: newAdventure }).save();
+
+    if (!createdAdventure) {
+      return res.status(404).json({ success: false, message: "Could not create adventure" });
+    }
+
+    res.status(200).json({success: true, response: createdAdventure});
+  } catch (error) {
+    res.status(500).json({ success: false, error: "Internal server Error" });
+  }
 });
+
+app.delete("/adventures/:id", authenticateUser);
+app.delete("/adventures/:id", async (req, res) => {
+  try {
+    const adventureId = req.params.id;
+    const deletedAdventure = await Adventure.findOneAndDelete({_id: adventureId});
+
+    if (!deletedAdventure) {
+      return res.status(404).json({ success: false, message: "Could not delete adventure" });
+    }
+
+    res.status(200).json({ success: true, response: deletedAdventure });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
