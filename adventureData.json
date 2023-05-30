@@ -4,7 +4,7 @@
       "description": "Milk the family cow",
       "difficulty": 0,
       "img_src":"https://64.media.tumblr.com/dab37f416df6fb502538322296f45086/tumblr_o45u40J67r1qf1qjho1_500.gifv",
-      "fail": "Just don't pull to hard next time",
+      "fail": "We dont have a cow...we have a bull [*MOOO*]",
       "win": 1
    },
     {
@@ -38,7 +38,7 @@
      {
         "description": "LET'S GO STREAKING THROUGH THE QUAD AND INTO THE GYMNASIUM, EVERYBODY IS DOING IT!",
         "difficulty": 7,
-        "img_src":"https://i.pinimg.com/564x/8d/b4/b7/8db4b7f48033b3aab4cbc331fdabc8fd.jpg",
+        "img_src":"https://i.redd.it/ix0e3ngcx1jx.gif",
         "fail": "GET IN THE CAR!",
         "win": 10
      },
@@ -46,7 +46,7 @@
       "description": "Find the holy grail before the looters",
       "difficulty": 10,
       "img_src":"https://i.pinimg.com/564x/fb/c9/4b/fbc94ba9ad30e9dda8def233efdd906f.jpg",
-      "fail": "Snakes, why did it have to be snakes?",
+      "fail": "Snakes. Why'd it have to be snakes?",
       "win": 13
       },
       {
