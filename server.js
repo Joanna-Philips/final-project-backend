@@ -7,18 +7,19 @@ import bcrypt from "bcrypt";
 const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
-// Defines the port the app will run on. Defaults to 8080, but can be overridden
-// when starting the server. Example command to overwrite PORT env variable value:
-// PORT=9000 npm start
+
+// Defines the port the app will run on. 
 const port = process.env.PORT || 8080;
 const app = express();
+
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
-// Start defining your routes here
+
+//Defining routes here
 app.get("/", (req, res) => {
   res.send({
-    message: "Welcome to project authenticate made by Leo Thunell and Joanna Philips",
+    message: "Welcome to the Adventure Game API made by Leo Thunell and Joanna Philips",
     routes:[{
       "/Login": "handles login function for a user/account",
       "/register": "handles registration of a new user/account",
@@ -26,8 +27,8 @@ app.get("/", (req, res) => {
     }]
   });
 });
-////////////
-const { Schema } = mongoose;
+
+// const { Schema } = mongoose;
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -40,9 +41,18 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   accessToken: {
-    // npm install crypto
     type: String,
     default: () => crypto.randomBytes(128).toString("hex")
+  },
+  userCoins: {
+    type: Number,
+    default: 100
+  },
+  userWeapons:{
+    type: Array,
+  },
+  userAccessories:{
+    type: Array
   }
 });
 
@@ -137,58 +147,35 @@ app.post("/login/guest", async (req, res) => {
   }
 });
 
-/// Login
-// app.post("/login", async (req, res) => {
-//   const { username, password } = req.body;
-
-  
-//   try {
-//     const user = await User.findOne({username: username})
-//     // const user = await User.findOne({username})
-//     if (user && bcrypt.compareSync(password, user.password)) {
-//       res.status(200).json({
-//         success: true,
-//         response: {
-//           username: user.username,
-//           id: user._id,
-//           accessToken: user.accessToken
-//         }
-//       });
-//     } else {
-//       res.status(400).json({
-//         success: false,
-//         response: "Credentials do not match"
-//       });
-//     }
-//   } catch (e) {
-//     res.status(500).json({
-//       success: false,
-//       response: e
-//     });
-//   }
-// });
-////
-// Thoughts
-
-const ThoughtSchema = new mongoose.Schema({
-  message: {
+//// Equipment
+const EquipmentSchema = new mongoose.Schema({
+  id: {
+    type: Number
+  },
+  name: {
     type: String
   },
-  createdAt: {
-    type: Date,
-    default: () => new Date()
+  category: {
+    type: String
   },
-  hearts: {
-    type: Number,
-    default: 0
+  img_src: {
+    type: String
   },
-  user: {
-    type: String,
-    require: true
+  damage: {
+    type: Number
+  },
+  cost: {
+    type: Number
+  },
+  sell: {
+    type: Number
+  },
+  description: {
+    type: String
   }
 });
 
-const Thought = mongoose.model("Thought", ThoughtSchema);
+const Equipment = mongoose.model("Equipment", EquipmentSchema);
 
 // Authenticate the user
 const authenticateUser = async (req, res, next) => {
@@ -211,24 +198,57 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
-app.get("/thoughts",authenticateUser);
-app.get("/thoughts", async (req, res) => {
+app.get("/equipments",authenticateUser);
+app.get("/equipments", async (req, res) => {
   const accessToken = req.header("Authorization");
   const user = await User.findOne({accessToken: accessToken});
-  const thoughts = await Thought.find({user: user._id})
-  //https://mongoosejs.com/docs/populate.html
-  res.status(200).json({success: true, response: thoughts})
+  const equipments = await Equipment.find({user: user._id})
+  res.status(200).json({success: true, response: equipments})
 });
 
-app.post("/thoughts",authenticateUser);
-app.post("/thoughts", async (req, res) => {
-  const { message } = req.body;
+app.post("/equipments",authenticateUser);
+app.post("/equipments", async (req, res) => {
+  const { newEquipment } = req.body;
   const accessToken = req.header("Authorization");
   const user = await User.findOne({accessToken: accessToken});
-  const thoughts = await new Thought({message: message, user: user._id}).save();
-  res.status(200).json({success: true, response: thoughts})
+  const createdEquipment = await new Equipment({newEquipment: newEquipment}).save();
+  res.status(200).json({success: true, response: createdEquipment})
 });
-///////////
+
+//// Adventure
+const AdventureSchema = new mongoose.Schema({
+  id: {
+    type: Number
+  },
+  description: {
+    type: String
+  },
+  difficulty: {
+    type: Number
+  },
+  img_src: {
+    type: String
+  }
+});
+
+const Adventure = mongoose.model("Adventure", AdventureSchema);
+
+app.get("/adventures",authenticateUser);
+app.get("/adventures", async (req, res) => {
+  const accessToken = req.header("Authorization");
+  const user = await User.findOne({accessToken: accessToken});
+  const adventures = await Adventure.find({user: user._id})
+  res.status(200).json({success: true, response: adventures})
+});
+
+app.post("/adventures",authenticateUser);
+app.post("/adventures", async (req, res) => {
+  const { newAdventure } = req.body;
+  const accessToken = req.header("Authorization");
+  const user = await User.findOne({accessToken: accessToken});
+  const createdAdventure = await new Adventure({ newAdventure: newAdventure }).save();
+  res.status(200).json({success: true, response: createdAdventure})
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

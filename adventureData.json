@@ -2,7 +2,8 @@
 "adventures": [
     {
         "description": "Comb the hair of the fair lady Rapunzel",
-        "difficulty": 2
+        "difficulty": 2,
+        "img_src":"bla"
      },
     {
        "description": "Prepare and present a feast of Sæhrímnir",
