@@ -1,20 +1,66 @@
 {
 "adventures": [
+   {
+      "description": "Milk the family cow",
+      "difficulty": 0,
+      "img_src":"https://64.media.tumblr.com/dab37f416df6fb502538322296f45086/tumblr_o45u40J67r1qf1qjho1_500.gifv",
+      "fail": "We dont have a cow...we have a bull [*MOOO*]",
+      "win": 1
+   },
     {
         "description": "Comb the hair of the fair lady Rapunzel",
-        "difficulty": 2,
-        "img_src":"bla"
-     },
-    {
-       "description": "Prepare and present a feast of Sæhrímnir",
-       "difficulty": 5
-    },
-    {
-        "description": "Wrestle your greased up grandmother during the holidays",
-        "difficulty": 8
+        "difficulty": 1,
+        "img_src":"https://static.wikia.nocookie.net/1c9b64e5-3c5c-46ec-986f-c7c42a1d2d9b/scale-to-width/755",
+        "fail": "You should bring some conditioner next time",
+        "win": 2
      },
      {
-        "description": "",
-        "difficulty": 10
-     }
+       "description": "Fill in for the missing scarecrow",
+       "difficulty": 2,
+       "img_src":"https://64.media.tumblr.com/8a9f9f1c663730b0cd2c848d16e3053c/tumblr_ommbmm3pKp1rnbw6mo1_1280.gifv",
+       "fail": "Don't they ever stop migrating?",
+       "win": 3
+    },
+    {
+       "description": "Prepare and present a feast of Sæhrímnir",
+       "difficulty": 3,
+       "img_src":"https://t4.ftcdn.net/jpg/02/78/90/95/360_F_278909524_BSUNvDaF5Oxm5P1bvrq9UdAnVCJjHxZI.jpg",
+       "fail": "Better follow the instructions next time",
+       "win": 4
+    },
+    {
+        "description": "Wrestle the witch of the woods",
+        "difficulty": 5,
+        "img_src":"https://i.pinimg.com/564x/7c/a0/40/7ca040c91f883814e89a24fe4d5f8421.jpg",
+        "fail": "Surprisingly nimble, isn't she?",
+        "win": 6
+     },
+     {
+        "description": "LET'S GO STREAKING THROUGH THE QUAD AND INTO THE GYMNASIUM, EVERYBODY IS DOING IT!",
+        "difficulty": 7,
+        "img_src":"https://i.redd.it/ix0e3ngcx1jx.gif",
+        "fail": "GET IN THE CAR!",
+        "win": 10
+     },
+     {
+      "description": "Find the holy grail before the looters",
+      "difficulty": 10,
+      "img_src":"https://i.pinimg.com/564x/fb/c9/4b/fbc94ba9ad30e9dda8def233efdd906f.jpg",
+      "fail": "Snakes. Why'd it have to be snakes?",
+      "win": 13
+      },
+      {
+         "description": "Hunt aliens: YO! Stop your grinnin' and drop your linen....Found 'em.",
+         "difficulty": 12,
+         "img_src":"https://i.pinimg.com/564x/a3/bf/77/a3bf7769acd26870da3b0bd7de9ebc3a.jpg",
+         "fail": "GAME OVER MAN, GAME OVER",
+         "win": 20
+      },
+      {
+         "description": "...The machines rose from the ashes of the nuclear fire. Their war to exterminate mankind had raged for decades, but the final battle would not be fought in the future. It would be fought here, in our present. Tonight...",
+         "difficulty": 18,
+         "img_src":"https://i.pinimg.com/564x/77/c2/cb/77c2cb4ac4f3e68303bd8339b79a5d1d.jpg",
+         "fail": "Your clothes, give them to me. Now.",
+         "win": 25
+      }     
 ]}
