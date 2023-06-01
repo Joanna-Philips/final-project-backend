@@ -2,7 +2,7 @@
     "weapons": [
     {
         "name": "Unarmed",
-        "img_src": "../assets/img/Rock.jpg",
+        "img_src": "https://i.postimg.cc/tgRTzmnk/unarmed.png",
         "damage": 0,
         "cost": 0,
         "sell": 0,
@@ -10,7 +10,7 @@
     }, 
     {
         "name": "Stale baguett",
-        "img_src": "../assets/img/Rock.jpg",
+        "img_src": "https://i.postimg.cc/856jFf6g/baguette.png",
         "damage": 1,
         "cost": 2,
         "sell": 0,
@@ -18,7 +18,7 @@
     },  
     {
         "name": "Pet rock",
-        "img_src": "../assets/img/Rock.jpg",
+        "img_src": "https://i.postimg.cc/RZYScV9S/rock.png",
         "damage": 2,
         "cost": 6,
         "sell": 1,
@@ -26,7 +26,7 @@
     },
     {
         "name": "Wooden Sword",
-        "img_src": "../assets/img/Woodensword.jpg",
+        "img_src": "https://i.postimg.cc/1zRd5Db4/woodensword.png",
         "damage": 3,
         "cost": 9,
         "sell": 2,
@@ -34,7 +34,7 @@
     },
     {
         "name": "Dull pickaxe",
-        "img_src": "../assets/img/Pickaxe.jpg",
+        "img_src": "https://i.postimg.cc/Qt90HmmN/dullpickaxe.png",
         "damage": 5,
         "cost": 9,
         "sell": 3,
@@ -42,7 +42,7 @@
     },
     {
         "name": "Axe",
-        "img_src": "../assets/img/Axe.jpg",
+        "img_src": "https://i.postimg.cc/QNp6p9Xm/axe.png",
         "damage": 7,
         "cost": 15,
         "sell": 5,
@@ -50,7 +50,7 @@
     },
     {
         "name": "Spiked club",
-        "img_src": "../assets/img/Spikedclub.jpg",
+        "img_src": "https://i.postimg.cc/wvXRfsTc/spikedclub.png",
         "damage": 10,
         "cost": 21,
         "sell": 7,
@@ -58,7 +58,7 @@
     },
     {
         "name": "Iron sword",
-        "img_src": "../assets/img/Ironsword.jpg",
+        "img_src": "https://i.postimg.cc/hPjhxYx0/ironsword.png",
         "damage": 12,
         "cost": 27,
         "sell": 9,
@@ -66,7 +66,7 @@
     },
     {
         "name": "Flail of a immeasurable hurt",
-        "img_src": "../assets/img/Flail.jpg",
+        "img_src": "https://i.postimg.cc/DfD3jpH6/flail.png",
         "damage": 18,
         "cost": 45,
         "sell": 12,
