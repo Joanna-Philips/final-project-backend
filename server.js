@@ -210,15 +210,15 @@ app.get("/equipments", async (req, res) => {
 
 /* to post to the server user following layout:
     {
-        "newEquipment": {
-          "name": "Stale baguette",
-          "img_src": "../assets/img/Rock.jpg",
-          "damage": 1,
-          "cost": 2,
-          "sell": 0,
-          "description": "An extremely dry baguette"
-        }
-      }
+  "newEquipment": {
+    "name": "Stale baguette",
+    "img_src": "../assets/img/Rock.jpg",
+    "damage": 1,
+    "cost": 2,
+    "sell": 0,
+    "description": "An extremely dry baguette"
+  }
+}
  */
 
 app.post("/equipments", authenticateUser);
