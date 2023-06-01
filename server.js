@@ -174,9 +174,6 @@ const EquipmentSchema = new mongoose.Schema({
   name: {
     type: String
   },
-  category: {
-    type: String
-  },
   img_src: {
     type: String
   },
@@ -211,21 +208,35 @@ app.get("/equipments", async (req, res) => {
   }
 });
 
+/* to post to the server user following layout:
+    {
+        "newEquipment": {
+          "name": "Stale baguette",
+          "img_src": "../assets/img/Rock.jpg",
+          "damage": 1,
+          "cost": 2,
+          "sell": 0,
+          "description": "An extremely dry baguette"
+        }
+      }
+ */
+
 app.post("/equipments", authenticateUser);
 app.post("/equipments", async (req, res) => {
   try {
     const { newEquipment } = req.body;
-    const createdEquipment = await new Equipment({ newEquipment: newEquipment }).save();
-
+    const createdEquipment = await new Equipment(newEquipment).save();
     if (!createdEquipment) {
       return res.status(404).json({ success: false, message: "Could not create equipment" });
     }
 
     res.status(200).json({ success: true, response: createdEquipment });
   } catch (error) {
+    console.error(error); // Log the error to the console for debugging purposes
     res.status(500).json({ success: false, error: "Server Error" });
   }
 });
+
 
 app.delete("/equipments/:id", authenticateUser);
 app.delete("/equipments/:id", async (req, res) => {
