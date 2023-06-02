@@ -46,7 +46,7 @@ const UserSchema = new mongoose.Schema({
   },
   userCoins: {
     type: Number,
-    default: 100
+    default: 0
   },
   userWeapons:{
     type: Array,
