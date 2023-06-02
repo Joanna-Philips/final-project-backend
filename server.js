@@ -184,7 +184,11 @@ app.get("/user", async (req, res) => {
     if (!user) {
       return res.status(404).json({ success: false, message: "User profile not found" });
     }
-    res.status(200).json({ success: true, response: user });
+    res.status(200).json({ success: true, response: {
+      userCoins: user.userCoins,
+      userWeapons: user.userWeapons,
+      userAvatar: user.userAvatar 
+    }, });
   } catch (error) {
     res.status(500).json({ success: false, error: error});
   }
