@@ -50,6 +50,16 @@ const UserSchema = new mongoose.Schema({
   },
   userWeapons:{
     type: Array,
+    default: async function () {
+      const Weapon = mongoose.model("Equipment", EquipmentSchema);
+      const firstWeapon = await Weapon.findOne().lean(); // Retrieve the first weapon object
+
+      if (firstWeapon) {
+        return [firstWeapon]; // Return the first weapon as an array
+      } else {
+        return []; // Return an empty array if no weapon objects are found
+      }
+    },
   },
   userAvatar:{
     type: Array,
