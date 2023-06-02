@@ -178,6 +178,7 @@ const authenticateUser = async (req, res, next) => {
 // get user profile
 app.get("/user", authenticateUser);
 app.get("/user", async (req, res) => {
+  const accessToken = req.header("Authorization");
   try {
     const user = await User.findOne({ accessToken: accessToken });
     if (!user) {
