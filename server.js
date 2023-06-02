@@ -51,6 +51,9 @@ const UserSchema = new mongoose.Schema({
   userWeapons:{
     type: Array,
   },
+  userAvatar:{
+    type: Array,
+  },
   userAccessories:{
     type: Array
   }
@@ -110,6 +113,9 @@ app.post("/login", async (req, res) => {
             username: user.username,
             id: user._id,
             accessToken: user.accessToken,
+/*             userCoins: user.userCoins,
+            userWeapons: user.userWeapons,
+            userAvatar: user.userAvatar */
           },
         });
       } else {
@@ -169,6 +175,21 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
+// get user profile
+app.get("/user", authenticateUser);
+app.get("/user", async (req, res) => {
+  try {
+    const user = await User.findOne({ accessToken: accessToken });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User profile not found" });
+    }
+    res.status(200).json({ success: true, response: user });
+  } catch (error) {
+    res.status(500).json({ success: false, error: "Server Error" });
+  }
+});
+
 //// Equipment
 const EquipmentSchema = new mongoose.Schema({
   name: {
@@ -213,6 +234,7 @@ app.get("/equipments", async (req, res) => {
 
 app.post("/equipments", authenticateUser);
 app.post("/equipments", async (req, res) => {
+ 
   try {
     const { newEquipment } = req.body;
     const createdEquipment = await new Equipment({ newEquipment: newEquipment }).save();
