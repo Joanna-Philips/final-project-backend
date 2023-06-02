@@ -180,13 +180,12 @@ app.get("/user", authenticateUser);
 app.get("/user", async (req, res) => {
   try {
     const user = await User.findOne({ accessToken: accessToken });
-
     if (!user) {
       return res.status(404).json({ success: false, message: "User profile not found" });
     }
     res.status(200).json({ success: true, response: user });
   } catch (error) {
-    res.status(500).json({ success: false, error: "Server Error" });
+    res.status(500).json({ success: false, error: error});
   }
 });
 
