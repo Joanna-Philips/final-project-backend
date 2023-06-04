@@ -1,8 +1,8 @@
 import express from "express";
-import adventureHandler from './adventures';
+import equipmentHandler from "./equipments";
 
 const router = express.Router();
 
-router.use('/hello', adventureHandler);
+router.use('/equip', equipmentHandler);
 
 export default router;

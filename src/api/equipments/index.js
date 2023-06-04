@@ -1,0 +1,1 @@
+export { default } from "./equipments.routes";
