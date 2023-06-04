@@ -5,8 +5,8 @@ import deleteAdventure from "./deleteAdventure";
 
 const router = express.Router();
 
-router.use('/adventures', getAdventures);
-router.use('/adventures', addAdventure);
-router.use('/adventures/:id', deleteAdventure);
+router.use('/', getAdventures);
+router.use('/', addAdventure);
+router.use('/:id', deleteAdventure);
 
 export default router;

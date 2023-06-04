@@ -9,6 +9,6 @@ const router = express.Router();
 router.use('/register', registerUser);
 router.use('/login', loginUser);
 router.use('/login/guest', loginGuestUser);
-router.use('/user', getUserProfile);
+router.use('/', getUserProfile);
 
 export default router;
