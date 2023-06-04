@@ -1,1 +1,1 @@
-export { default } from "./adventures.routes";
+export { default } from "./adventureRoutes";

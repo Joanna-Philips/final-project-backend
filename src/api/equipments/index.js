@@ -1,1 +1,1 @@
-export { default } from "./equipments.routes";
+export { default } from "./equipmentRoutes";
