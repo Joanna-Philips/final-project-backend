@@ -10,6 +10,7 @@ app.use(cors());
 app.use('/users', api.users);
 app.use('/equipments', api.equipments);
 app.use('/adventures', api.adventures);
+app.use('/purchase', api.purchase)
 
 
 
@@ -17,4 +18,5 @@ app.get('*', (req, res) => {
   res.status(404).send('404 Not Found');
 });
 
-module.exports = app;
+// module.exports = app;
+export default app;
