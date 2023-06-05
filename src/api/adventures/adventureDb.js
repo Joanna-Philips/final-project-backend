@@ -9,6 +9,9 @@ const AdventureSchema = new mongooseConnection.Schema({
     },
     img_src: {
       type: String
+    },
+    rewardCoins: {
+      type: Number
     }
   });
   
