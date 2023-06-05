@@ -12,6 +12,9 @@ const AdventureSchema = new mongooseConnection.Schema({
     },
     rewardCoins: {
       type: Number
+    },
+    fail: {
+      type: String
     }
   });
   

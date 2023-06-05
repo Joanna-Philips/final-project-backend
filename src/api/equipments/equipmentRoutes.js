@@ -5,8 +5,8 @@ import deleteEquipment from "./deleteEquipment";
 
 const router = express.Router();
 
-router.use('/equipments', getEquipments);
-router.use('/equipments', addEquipment);
-router.use('/equipments/:id', deleteEquipment);
+router.use('/', getEquipments);
+router.use('/', addEquipment);
+router.use('/:id', deleteEquipment);
 
 export default router;

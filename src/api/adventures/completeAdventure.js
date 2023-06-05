@@ -14,8 +14,10 @@ const router = express.Router();
 router.post("/",authenticateUser);
 router.post("/", async (req, res) => {
   try {
-    const { adventureId } = req.body;
-    const completedAdventure = await adventureDb.findOne({ adventureId: adventureId })
+    // const { adventureId } = req.body;
+    const adventureId = req.params.id;
+    const completedAdventure = await adventureDb.findOne({ _id: adventureId })
+    console.log(completedAdventure);
     if (!completedAdventure) {
       return res.status(404).json({ success: false, error: "Could not find completed adventure" });
     }
