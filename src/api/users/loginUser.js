@@ -1,13 +1,15 @@
 import express from "express";
 import userDb from "./userDb";
+import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
     const { username, password } = req.body;
   
       try {
         const user = await userDb.findOne({ username: username });
+        console.log(user);
         if (user && bcrypt.compareSync(password, user.password)) {
           res.status(200).json({
             success: true,

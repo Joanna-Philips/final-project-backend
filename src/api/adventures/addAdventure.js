@@ -7,10 +7,10 @@ router.post("/",authenticateUser);
 router.post("/", async (req, res) => {
   try {
     const { newAdventure } = req.body;
-    console.log("new", newAdventure);
+    console.log("newAd: ", newAdventure);
     const createdAdventure = await adventureDb.create(newAdventure);
     /* const createdAdventure = await new adventureDb({ newAdventure: newAdventure }).save(); */
-    console.log("created", createdAdventure);
+    console.log("createdAd: ", createdAdventure);
     if (!createdAdventure) {
       return res.status(404).json({ success: false, message: "Could not create adventure" });
     }

@@ -10,7 +10,7 @@ app.use(cors());
 app.use('/users', api.users);
 app.use('/equipments', api.equipments);
 app.use('/adventures', api.adventures);
-app.use('/purchase', api.purchase)
+app.use('/purchases', api.purchases)
 
 
 

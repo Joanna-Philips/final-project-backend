@@ -2,13 +2,13 @@ import express from "express";
 import getAdventures from "./getAdventures";
 import addAdventure from "./addAdventure";
 import deleteAdventure from "./deleteAdventure";
-import completedAdventure from "./completeAdventure";
+import completeAdventure from "./completeAdventure";
 
 const router = express.Router();
 
-router.use('/', getAdventures);
-router.use('/', addAdventure);
-router.use('/:id', deleteAdventure);
-router.use('/:id', completedAdventure );
+router.use('/all', getAdventures);
+router.use('/add', addAdventure);
+router.use('/delete/:id', deleteAdventure);
+router.use('/complete', completeAdventure );
 
 export default router;

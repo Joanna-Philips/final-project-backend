@@ -14,21 +14,24 @@ const router = express.Router();
 router.post("/",authenticateUser);
 router.post("/", async (req, res) => {
   try {
-    // const { adventureId } = req.body;
-    const adventureId = req.params.id;
+    const { adventureId } = req.body;
+    //console.log(req.body);
+    //console.log("adventureID: ", adventureId);
     const completedAdventure = await adventureDb.findOne({ _id: adventureId })
-    console.log(completedAdventure);
+    //console.log("completedAd: ",completedAdventure);
     if (!completedAdventure) {
       return res.status(404).json({ success: false, error: "Could not find completed adventure" });
     }
 
     const accessToken = req.header("Authorization");
     const user = await userDb.findOne({ accessToken: accessToken });
+    console.log("user: ", user);
     user.userCoins += completedAdventure.rewardCoins;
-    await userDb.updateOne(user);
+    await user.save();
 
     res.status(200).json({success: true, response: user.userCoins});
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, error: error });
   }
 });
