@@ -4,7 +4,7 @@
     "description": "Starter project to get up and running with express quickly",
     "scripts": {
         "build": "npm install",
-        "start": "nodemon ./src/server/index.js",
+        "start": "babel-node ./src/server/index.js",
         "dev": "nodemon ./src/server/index.js --exec babel-node"
     },
     "author": "",
