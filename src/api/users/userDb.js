@@ -21,7 +21,7 @@ const UserSchema = new mongooseConnection.Schema({
     },
     userWeapons:{
       type: Array,
-      default: []
+      //default: []
     },
     userAvatar:{
       type: Array,

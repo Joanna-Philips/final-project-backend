@@ -1,6 +1,7 @@
 import express from "express";
 import userDb from "./userDb";
 import bcrypt from "bcrypt";
+import equipmentDb from "../equipments/equipmentDb";
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ router.post("/", async (req, res) => {
         username: username,
         password: bcrypt.hashSync(password, salt)
       }).save();
+      const unarmed = await equipmentDb.findOne({ name: 'Unarmed' });
+      newUser.userWeapons.push(unarmed._id);
+      await newUser.save();
+
       res.status(201).json({
         success: true,
         response: {
@@ -36,7 +41,7 @@ router.post("/", async (req, res) => {
    catch (e) {
       res.status(400).json({
         success: false,
-        response: "Username taken, try another one"
+        response: "Username taken, try another one",
       })
     }
 })
