@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
       await newUser.save();
 
       const defaultAvatar = await avatarDb.findOne({ style: 1 });
-      newUser.userAvatar = defaultAvatar;
+      newUser.userAvatar = defaultAvatar._id;
       await newUser.save();
 
       res.status(201).json({
