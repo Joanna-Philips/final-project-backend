@@ -24,7 +24,7 @@ const UserSchema = new mongooseConnection.Schema({
       //default: []
     },
     userAvatar:{
-      type: Array,
+      type: String,
     },
     userAccessories:{
       type: Array

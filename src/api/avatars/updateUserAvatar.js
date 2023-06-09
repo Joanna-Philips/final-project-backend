@@ -23,7 +23,7 @@ router.patch("/", async (req, res) => {
     const accessToken = req.header("Authorization");
     const user = await userDb.findOne({ accessToken: accessToken });
     console.log("user: ", user);
-    user.userAvatar = [chosenAvatar._id];
+    user.userAvatar = chosenAvatar._id;
     await user.save();
 
     res.status(200).json({success: true, response: user.userAvatar});

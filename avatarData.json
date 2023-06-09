@@ -26,3 +26,27 @@
         }
     ]
 }
+
+
+const playerAvatar = 'https://cdna.artstation.com/p/assets/images/images/051/793/398/original/guilherme-meireles-shyguy.gif?1658202660'
+
+const AvatarStyles = [
+  {
+    style: 1,
+    name: 'Spinning Man',
+    img_src: 'https://cdna.artstation.com/p/assets/images/images/009/882/016/original/molly-heady-carroll-schveretpteacherdancetransparent.gif?1521396516'
+  },
+  {
+    style: 2,
+    name: 'Dancing Lady',
+    img_src: 'https://cdna.artstation.com/p/assets/images/images/009/881/990/original/molly-heady-carroll-fero-feona-dance-xl.gif?1521396433'
+  },
+  {
+    style: 3,
+    name: 'Black Dog',
+    img_src: 'https://cdna.artstation.com/p/assets/images/images/009/881/992/original/molly-heady-carroll-frenchbulldog-run-postable-8colours.gif?1521396443'
+  },
+  { style: 4,
+    name: 'Backpack Man',
+    img_src: 'https://cdnb.artstation.com/p/assets/images/images/009/881/985/original/molly-heady-carroll-doctorspecialmove.gif?1521396421' }
+]
