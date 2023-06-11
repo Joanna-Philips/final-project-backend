@@ -1,6 +1,5 @@
 import express from "express";
 import userDb from "../users/userDb";
-import userDb from "../equipments/equipmentDb";
 import authenticateUser from "../users/authenticateUser";
 
 const router = express.Router();
