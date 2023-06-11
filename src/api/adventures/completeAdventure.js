@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     const accessToken = req.header("Authorization");
     const user = await userDb.findOne({ accessToken: accessToken });
     console.log("user: ", user);
-    user.userCoins += completedAdventure.rewardCoins;
+    user.userCoins += parseInt(completedAdventure.rewardCoins);
     await user.save();
 
     res.status(200).json({success: true, response: user.userCoins});
