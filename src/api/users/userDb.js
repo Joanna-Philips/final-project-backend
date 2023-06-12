@@ -20,11 +20,13 @@ const UserSchema = new mongooseConnection.Schema({
       default: 0
     },
     userWeapons:{
-      type: Array,
-      //default: []
+      type: Array
+    },
+    equippedWeapon:{
+      type: String
     },
     userAvatar:{
-      type: String,
+      type: String
     },
     userAccessories:{
       type: Array
