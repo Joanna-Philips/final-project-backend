@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
     res.status(200).json({ success: true, response: {
       userCoins: user.userCoins,
       userWeapons: user.userWeapons,
+      equippedWeapon: user.equippedWeapon,
       userAvatar: user.userAvatar 
     }, });
   } catch (error) {
