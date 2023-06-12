@@ -34,7 +34,7 @@ router.post("/", async (req,res) => {
             .json({
               success: true,
               response: user.equippedWeapon,
-              weaponToEquip: weaponToEquip,
+              weaponToEquip: weaponToEquip
             });
         } catch (error) {
             console.log(error);
