@@ -6,9 +6,10 @@ import authenticateUser from "./authenticateUser";
 const router = express.Router();
 
 router.post("/", authenticateUser);
-router.post("/", async (res,req) => {
+router.post("/", async (req,res) => {
     
     try{
+        console.log(req.body);
         const { equipmentId } = req.body;
         const weaponToEquip = await equipmentDb.findOne({ _id: equipmentId });
         if (!weaponToEquip) {
@@ -36,6 +37,7 @@ router.post("/", async (res,req) => {
               weaponToEquip: weaponToEquip,
             });
         } catch (error) {
+            console.log(error);
           res.status(500).json({ success: false, error: error });
         }
       });
