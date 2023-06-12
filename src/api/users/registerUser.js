@@ -27,11 +27,10 @@ router.post("/", async (req, res) => {
       }).save();
 
       const unarmed = await equipmentDb.findOne({ name: 'Unarmed' });
+      const defaultAvatar = await avatarDb.findOne({ style: 1 });
+
       newUser.userWeapons.push(unarmed._id);
       newUser.equippedWeapon = unarmed._id;
-      await newUser.save();
-
-      const defaultAvatar = await avatarDb.findOne({ style: 1 });
       newUser.userAvatar = defaultAvatar._id;
       await newUser.save();
 
