@@ -1,6 +1,7 @@
 import express from "express";
 import adventureDb from "./adventureDb";
 import userDb from "../users/userDb";
+import equipmentDb from "../equipments/equipmentDb";
 import authenticateUser from "../users/authenticateUser";
 
 const router = express.Router();
@@ -23,10 +24,25 @@ router.post("/", async (req, res) => {
     const accessToken = req.header("Authorization");
     const user = await userDb.findOne({ accessToken: accessToken });
     console.log("user: ", user);
-    user.userCoins += completedAdventure.rewardCoins;
+
+    const equippedWeapon = await equipmentDb.findOne({ _id: user.equippedWeapon });
+    let questWon = false;
+    if(equippedWeapon.damage > completedAdventure.difficulty){
+      user.userCoins += completedAdventure.rewardCoins;
+      questWon = true;
+    } else {
+      user.userCoins -= completedAdventure.rewardCoins;
+    }
+   
     await user.save();
 
-    res.status(200).json({success: true, response: user.userCoins});
+    res.status(200).json({
+      success: true, 
+      response:{
+        userCoins: user.userCoins,
+        questWon: questWon
+      } 
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: error });
