@@ -5,12 +5,6 @@ import authenticateUser from "../users/authenticateUser";
 
 const router = express.Router();
 
-// 1. Post avatar ID and accessToken
-// 2. Find avatar details in avaatrDb using _id
-// 3. Find user using accessToken
-// 4. update avatar id to userDb (userAVatar) 
-// 5. Return success/false
-
 router.post("/",authenticateUser);
 router.patch("/", async (req, res) => {
   try {

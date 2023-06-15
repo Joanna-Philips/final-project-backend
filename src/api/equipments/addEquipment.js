@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 
     res.status(200).json({ success: true, response: createdEquipment });
   } catch (error) {
-    console.error(error); // Log the error to the console for debugging purposes
+    console.error(error); 
     res.status(500).json({ success: false, error: "Server Error" });
   }
 });

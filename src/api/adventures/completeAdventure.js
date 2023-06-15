@@ -6,12 +6,6 @@ import authenticateUser from "../users/authenticateUser";
 
 const router = express.Router();
 
-// 1. Post adventure ID and accessToken
-// 2. Find adventure in adventureDb using adventure_id
-// 3. Find user using accessToken
-// 4. Add rewardCoins from adventure to userCoins
-// 5. Return success/false
-
 router.post("/",authenticateUser);
 router.post("/", async (req, res) => {
   try {

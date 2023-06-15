@@ -9,7 +9,6 @@ router.post("/", async (req, res) => {
  
   try {
     const { newAvatar } = req.body;
-    console.log(newAvatar)
     const createAvatar = await new avatarDb(newAvatar).save();
     if (!createAvatar) {
       return res.status(404).json({ success: false, message: "Could not create avatar" });

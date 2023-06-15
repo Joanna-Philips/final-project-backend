@@ -5,14 +5,6 @@ import authenticateUser from "../users/authenticateUser";
 
 const router = express.Router();
 
-// 0. Post Get equipmentID
-// 1. Get the cost of equipment from equipment Db
-// 2. Get userCoins from userDb
-// 3. Calculate userCoins - EquipmentCost
-// 4. if result = > 0 add equipment to userWeapon/ (purchase successful)
-// 5. Subtract equipment.cost from userCoins/
-// 6. else not enough coins/ purchase failed
-
 router.post("/", authenticateUser);
 router.post("/", async (req, res) => {
   try {
