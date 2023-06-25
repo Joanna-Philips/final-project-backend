@@ -1,7 +1,7 @@
 Wayward Wilds Adventure Game Backend
+============================
 
 By Leo Thunell & Joanna Philips
-============================
 
 * * *
 
